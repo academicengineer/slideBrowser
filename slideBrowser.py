@@ -20,12 +20,15 @@ driver = webdriver.Chrome('C:\\Users\\member\\Desktop\\slideBrowser\\chromedrive
 # 使用するWebカメラの選択
 webcam_id=0         # 内臓カメラは1
 
+# 講義スライドの枚数
+slide_num=5
+
 # NAOのWebサーバをブラウザで起動
 driver.get('http://192.168.11.18/apps/top.html')
 
 # NAOのテスト起動
 driver.find_element_by_id("connect-btn").click()
-time.sleep(10)
+# time.sleep(10)
 
 # Openposeで姿勢推定するための学習者の画像をWebカメラで撮影するための関数
 def getImage(slide_num):
@@ -85,44 +88,13 @@ def getImage(slide_num):
     df.to_csv(csvfile, encoding='utf-8', index=False)
     print(csvfile_label+"と"+csvfile+"を作成しました")
 
-# 1ページ目のスライド開始
-driver.get('http://192.168.11.18/apps/slide01.html')
-driver.find_element_by_id("slide01-btn").click()
-getImage(1)
-time.sleep(10)
+def lecture(slide_num):
+    for i in range (1,slide_num):
+        url = "http://192.168.11.18/apps/slide0"+str(i)+".html"
+        btn = "slide0"+str(i)+"-btn"
+        driver.get(url)
+        driver.find_element_by_id(btn).click()
+        getImage(i)
+        time.sleep(10)
 
-# 2ページ目のスライド開始
-driver.get('http://192.168.11.18/apps/slide02.html')
-driver.find_element_by_id("slide02-btn").click()
-getImage(2)
-time.sleep(15)
-
-# 3ページ目のスライド開始
-driver.get('http://192.168.11.18/apps/slide03.html')
-driver.find_element_by_id("slide03-btn").click()
-getImage(3)
-time.sleep(15)
-
-# 4ページ目のスライド開始
-driver.get('http://192.168.11.18/apps/slide04.html')
-driver.find_element_by_id("slide04-btn").click()
-getImage(4)
-time.sleep(15)
-
-# 5ページ目のスライド開始
-driver.get('http://192.168.11.18/apps/slide05.html')
-driver.find_element_by_id("slide05-btn").click()
-getImage(5)
-time.sleep(15)
-
-
-# 別タブでスライドブラウザで起動
-# driver.execute_script("window.open()")
-# driver.switch_to.window(driver.window_handles[1])
-# driver.get('file:///C:/Users/member/Desktop/webSocketServer/slide01.html')
-# time.sleep(3)
-
-# スライドの切り替え
-# element = driver.find_element_by_tag_name("a")
-# element.click()
-# time.sleep(3)
+lecture(slide_num)
