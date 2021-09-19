@@ -5,12 +5,19 @@
     <title>slideServer</title>
     <script src="jquery.min.js"></script>
     <script src="qimessaging.js"></script>
-    <script src="js/slide01.js"></script>
+    <script src="slide01.js"></script>
+    <script src="skip.js"></script>
+    <script src="repeat.js"></script>
+    <script src="pose.js"></script>
 </head>
 <body>
     <h1>スライドサーバ</h1>
     <button type="button" id="slide01-btn">ロボット音声</button>
+    <button type="button" id="back-btn" onclick="location.href='top.html'">前のスライドに戻る</button>
+    <button type="button" id="skip-btn">このスライドをスキップする</button>
+    <button type="button" id="repeat-btn">もう一度この説明をする</button>
+    <button type="button" id="pose-btn">スライドの説明をストップする</button>
     <p>講義スライド1ページ目</p>
-    <a href="slide02.html"><img src="images/slide01.jpg" alt="slide01" title="slide01">
+    <a href="slide02.html"><img src="slide01.jpg" alt="slide01" title="slide01">
 </body>
 </html>

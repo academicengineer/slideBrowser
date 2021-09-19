@@ -17,7 +17,7 @@ $(function(){
             qis.service('ALAnimatedSpeech').done(function(aas){
                 als.alAnimatedSpeech = aas;
                 //console.log('接続成功');
-                aas.say('皆さん，おはようございます。今日はいい天気ですね。');
+                aas.say('皆さん，おはようございます。今日はいい天気ですね');
             });
 
             // 接続断
