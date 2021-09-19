@@ -92,7 +92,6 @@ def getImage(slide_num):
     print(csvfile_label+"と"+csvfile+"を作成しました")
 
 # 作成されたOpenposeの特徴量を計算し，受講状態を推定する関数
-# 作成されたOpenposeの特徴量を計算し，受講状態を推定する関数
 def estimate(slide_num):
     for i in range (1,slide_num+1):
 
@@ -125,6 +124,7 @@ def estimate(slide_num):
         if (R_Eye or L_Eye) == 0 or (R_Eye or L_Eye) < 0.25 :
             driver.find_element_by_id("repeat-btn").click()
             driver.find_element_by_id("back-btn").click()
+            driver.refresh()
             driver.find_element_by_id(btn).click()
             print("受講状態１：聞いていないの判定")
 
@@ -161,6 +161,6 @@ def lecture(slide_num):
         driver.find_element_by_id(btn).click()
         getImage(i)
         estimate(i)
-        time.sleep(10)
+        time.sleep(5)
 
 lecture(slide_num)
