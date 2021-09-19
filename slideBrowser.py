@@ -31,7 +31,7 @@ driver.get("http://"+ip+"/apps/top.html")
 
 # NAOのトップページ自動起動
 driver.find_element_by_id("connect-btn").click()
-# time.sleep(10)
+time.sleep(10)
 
 # Openposeで姿勢推定するための学習者の画像をWebカメラで撮影するための関数
 def getImage(slide_num):
