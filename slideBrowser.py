@@ -26,7 +26,7 @@ slide_num=5
 # NAOのWebサーバをブラウザで起動
 driver.get('http://192.168.11.18/apps/top.html')
 
-# NAOのテスト起動
+# NAOのトップページ自動起動
 driver.find_element_by_id("connect-btn").click()
 # time.sleep(10)
 
@@ -88,6 +88,33 @@ def getImage(slide_num):
     df.to_csv(csvfile, encoding='utf-8', index=False)
     print(csvfile_label+"と"+csvfile+"を作成しました")
 
+# 作成されたOpenposeの特徴量を計算し，受講状態を推定する関数
+def estimate(keypoints):
+    # 鼻，首，右肩，左肩，右目，左目，右耳，左耳の特徴量をcsvファイルから取得
+    keypoints = 
+
+    # 受講状態１：聞いていないの判定 
+    # 右耳か左耳のいずれかの信頼度が0　または 右耳と左耳の両方の信頼度が0.25以下の場合，
+    # 講義意図１：興味を持たせる（注意喚起もしくは注意維持）を実行する
+    # NAOの目を光らせる，NAOがパラ言語（ピッチ・音量・速度，間・抑揚）を用いて聞いてくださいとしゃべる，
+
+    # 受講状態３：重要箇所に気づくの判定
+    # の場合，
+    # 講義意図３：講義内容の詳細を理解させる（重要箇所の理解促進もしくは関係の理解促進）を実行する
+    # NAOがジェスチャーや，パラ言語（ピッチ・音量・速度，間・抑揚）を用いてしゃべる，
+
+    # 受講状態４：詳細を理解しているの判定
+    # の場合，
+    # 講義意図３：講義内容の詳細を理解させる（重要箇所の理解促進もしくは関係の理解促進）を実行する
+    # NAOがジェスチャーや，パラ言語（ピッチ・音量・速度，間・抑揚）を用いて，スライド間の接続表現を意識してしゃべる，
+
+    # 受講状態２：耳を傾けているの判定 上記以外すべての場合，
+    # 講義意図２：重要箇所への集中・理解を促す（注意維持・注意誘導もしくは重要箇所の理解促進）を実行する
+    # NAOが学習者の視線を意識し，がジェスチャーや，パラ言語（ピッチ・音量・速度，間・抑揚）を用いてしゃべる，
+
+    return 
+
+# 学習者の受講状態推定に基づく講義を意図的に行う関数
 def lecture(slide_num):
     for i in range (1,slide_num):
         url = "http://192.168.11.18/apps/slide0"+str(i)+".html"
@@ -95,6 +122,7 @@ def lecture(slide_num):
         driver.get(url)
         driver.find_element_by_id(btn).click()
         getImage(i)
+        estimate()
         time.sleep(10)
 
 lecture(slide_num)
