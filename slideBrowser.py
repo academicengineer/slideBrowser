@@ -17,14 +17,14 @@ import pprint
 # NAOのIPアドレス設定
 ip = "192.168.11.18"
 
+# 講義スライドの枚数
+slide_num=5
+
 # ChromeDriverのパス設定
 driver = webdriver.Chrome('C:\\Users\\member\\Desktop\\slideBrowser\\chromedriver.exe')
 
 # 使用するWebカメラの選択
 webcam_id=0         # 内臓カメラは1
-
-# 講義スライドの枚数
-slide_num=5
 
 # NAOのWebサーバをブラウザで起動
 driver.get("http://"+ip+"/apps/top.html")
@@ -113,6 +113,9 @@ def estimate(slide_num):
         
         R_Eye = df.iloc[15]['信頼度P']
         L_Eye = df.iloc[16]['信頼度P']
+        R_Ear = df.iloc[17]['信頼度P']
+        L_Ear = df.iloc[18]['信頼度P']
+
         R_Wri = df.iloc[4]['信頼度P']
         L_Wri = df.iloc[7]['信頼度P']
       
@@ -121,10 +124,10 @@ def estimate(slide_num):
         # 講義意図１：興味を持たせる（注意喚起もしくは注意維持）を実行する
         # NAOの目を光らせる，NAOがパラ言語（ピッチ・音量・速度，間・抑揚）を用いて聞いてくださいとしゃべる
         # if df.query("label=='R_Ear'&'信頼度P<0.25'"):
-        if (R_Eye or L_Eye) == 0 or (R_Eye or L_Eye) < 0.25 :
+        if ((R_Eye or L_Eye) == 0) or ((R_Ear or L_Ear) == 0) or (R_Eye or L_Eye) < 0.25 :
             driver.find_element_by_id("repeat-btn").click()
             driver.find_element_by_id("back-btn").click()
-            driver.refresh()
+            # driver.refresh()
             driver.find_element_by_id(btn).click()
             print("受講状態１：聞いていないの判定")
 
