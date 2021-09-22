@@ -125,7 +125,8 @@ def estimate(slide_num):
         # NAOの目を光らせる，NAOがパラ言語（ピッチ・音量・速度，間・抑揚）を用いて聞いてくださいとしゃべる
         # if df.query("label=='R_Ear'&'信頼度P<0.25'"):
         if ((R_Eye or L_Eye) == 0) or ((R_Ear or L_Ear) == 0) or (R_Eye or L_Eye) < 0.25 :
-            driver.find_element_by_id("repeat-btn").click()
+            # driver.find_element_by_id("repeat-btn").click()
+            # driver.refresh()
             driver.find_element_by_id("back-btn").click()
             # driver.refresh()
             driver.find_element_by_id(btn).click()
