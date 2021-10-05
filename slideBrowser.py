@@ -30,6 +30,7 @@ webcam_id=0         # 内臓カメラは1
 driver.get("http://"+ip+"/apps/top.html")
 
 # NAOのトップページ自動起動
+time.sleep(5)
 driver.find_element_by_id("connect-btn").click()
 time.sleep(10)
 
@@ -127,7 +128,7 @@ def estimate(slide_num):
         if ((R_Eye or L_Eye) == 0) or ((R_Ear or L_Ear) == 0) or (R_Eye or L_Eye) < 0.25 :
             # driver.find_element_by_id("repeat-btn").click()
             # driver.refresh()
-            driver.find_element_by_id("back-btn").click()
+            # driver.find_element_by_id("back-btn").click()
             # driver.refresh()
             driver.find_element_by_id(btn).click()
             print("受講状態１：聞いていないの判定")
@@ -137,7 +138,7 @@ def estimate(slide_num):
         # 講義意図３：講義内容の詳細を理解させる（重要箇所の理解促進もしくは関係の理解促進）を実行する
         # NAOがジェスチャーや，パラ言語（ピッチ・音量・速度，間・抑揚）を用いて，スライド間の接続表現を意識してしゃべる，
         elif (R_Eye or L_Eye) > 0.85 and (R_Wri or L_Wri) > 0:
-            driver.find_element_by_id("skip-btn").click()
+            # driver.find_element_by_id("skip-btn").click()
             driver.find_element_by_tag_name("a").click()
             print("受講状態４：詳細を理解しているの判定")
 
@@ -146,7 +147,7 @@ def estimate(slide_num):
         # 講義意図３：講義内容の詳細を理解させる（重要箇所の理解促進もしくは関係の理解促進）を実行する
         # NAOがジェスチャーや，パラ言語（ピッチ・音量・速度，間・抑揚）を用いてしゃべる，
         elif  (R_Eye or L_Eye) > 0.85 :
-            driver.find_element_by_id("pose-btn").click()
+            # driver.find_element_by_id("pose-btn").click()
             print("受講状態３：重要箇所に気づくの判定")
     
         # 受講状態２：耳を傾けているの判定 上記以外すべての場合，
