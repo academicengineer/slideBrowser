@@ -1,7 +1,7 @@
 $(function(){
     var qis, ip, als = {};
-    // リピートボタンclickイベント
-    $('#repeat-btn').on('click', function(){
+    // ポーズボタンclickイベント
+    $('#naorepeat-btn').on('click', function(){
         // 入力IP取得
         ip = $('#ip').val();
         // NAOqi Session 生成
@@ -16,7 +16,7 @@ $(function(){
             qis.service('ALAnimatedSpeech').done(function(aas){
                 als.alAnimatedSpeech = aas;
                 //console.log('接続成功');
-                aas.say('もう一度スライドの説明をします');
+                aas.say('もう一度，スライドの説明を繰り返します');
             });
 
             // 接続断

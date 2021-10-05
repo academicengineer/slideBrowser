@@ -17,7 +17,7 @@ $(function(){
             qis.service('ALAnimatedSpeech').done(function(aas){
                 als.alAnimatedSpeech = aas;
                 //console.log('接続成功');
-                aas.say('いかがでしょうか。質問はありますか。特に柏原研究室では「学習モデル作りこそeLearning研究の本質」と捉え、先進的なeLearningの実現を目指して研究を進めています。');
+                aas.say('いかがでしょうか。質問はありますか。特にかしはら研究室では「学習モデル作りこそ、いーらにんぐ研究の本質」と捉え、先進的なeLearningの実現を目指して研究を進めています。');
             });
 
             // 接続断
