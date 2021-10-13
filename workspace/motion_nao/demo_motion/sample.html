@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="sample.js"></script>
+
+
+    <input type="range" id="range" min="1" max="10" step="1">
+    <span id="value">5</span>
+
+    <script>
+        var elem = document.getElementById('range');
+        var target = document.getElementById('value');
+        var rangeValue = function (elem, target) {
+          return function(evt){
+            target.innerHTML = elem.value;
+          }
+        }
+        elem.addEventListener('input', rangeValue(elem, target));
+      </script>
+
+</head>
+<body>
+    
+</body>
+</html>
