@@ -18,7 +18,7 @@ driver = webdriver.Chrome('C:\\Users\\member\\Desktop\\slideBrowser\\chromedrive
 def estimate(slide_num):
     for i in range (1,slide_num+1):
 
-        url = "http://"+ip+"/apps/slide0"+str(i)+".html"
+        url = "http://"+ip+"/apps/lec2_slide1.html"
         driver.get(url)
         btn = "slide0"+str(i)+"-btn"
         
